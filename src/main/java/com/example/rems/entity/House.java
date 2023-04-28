@@ -19,8 +19,8 @@ public class House {
     @Column(name = "id")
     private BigInteger id;
 
-    @Column(name = "pid")
-    private BigInteger pid;
+    @Column(name = "propertyid",insertable = false,updatable = false,unique = true)
+    private BigInteger propertyid;
 
     @Column(name = "location")
     private String location;
@@ -30,6 +30,10 @@ public class House {
 
     @Column(name = "sq_foot")
     private BigInteger sq_foot;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "propertyid", referencedColumnName = "pid")
+    private Property property;
 
 
 }
