@@ -13,6 +13,8 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 public class BookingDetails {
+    private BigInteger id;
+
     private String email;
 
     private BigInteger pid;

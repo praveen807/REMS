@@ -6,8 +6,10 @@ import com.example.rems.repository.BookingRepo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookingService {
@@ -27,5 +29,31 @@ public class BookingService {
                     .end_date(booking.getEnd_date()).build());
         });
         return "Success";
+    }
+
+    public List<Booking> getAllBookings(String email) {
+       return bookingRepo.findByEmail(email);
+    }
+
+    public String updatebooking(BookingDetails bookingDetails) {
+        Optional<Booking> bookingEntity = bookingRepo.findById(bookingDetails.getId());
+        if (bookingEntity.isPresent()){
+            Booking booking = bookingEntity.get();
+            booking.setBooking_amount(bookingDetails.getBooking_amount());
+            booking.setCreditcard_number(bookingDetails.getCreditcard_number());
+            booking.setStart_date(bookingDetails.getStart_date());
+            booking.setEnd_date(bookingDetails.getEnd_date());
+            bookingRepo.save(booking);
+        }
+        else {
+            return "No Booking Found";
+        }
+
+        return "Updated SuccessFully";
+    }
+
+    public String cancelBooking(BigInteger id) {
+        bookingRepo.deleteById(id);
+        return "Deleted SuccessFully and Amount is refunded";
     }
 }
