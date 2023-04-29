@@ -2,17 +2,20 @@ package com.example.rems.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "property")
 public class Property {
     @Id
@@ -39,7 +42,7 @@ public class Property {
     private String description;
 
     @Column(name = "price")
-    private String price;
+    private BigInteger price;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "availability")
@@ -47,5 +50,13 @@ public class Property {
 
     @OneToOne(mappedBy = "property")
     private House house;
+
+    @OneToOne(mappedBy = "property")
+    private Appartment appartment;
+
+//    @OneToMany(targetEntity = Booking.class , cascade = CascadeType.ALL)
+//    @JoinColumn(name = "pb_fk", referencedColumnName = "pid")
+//    private  List<Booking> bookings;
+
 
 }

@@ -11,11 +11,10 @@ import java.math.BigInteger;
 @Data
 @Entity
 @NoArgsConstructor
-@Builder
 @AllArgsConstructor
-@Table(name = "house")
-public class House {
-
+@Builder
+@Table(name = "appartments")
+public class Appartment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO,generator = "native")
     @Column(name = "id")
@@ -30,12 +29,13 @@ public class House {
     @Column(name = "number_of_rooms")
     private BigInteger number_of_rooms;
 
+    @Column(name = "building_type")
+    private String building_type;
+
     @Column(name = "sq_foot")
     private BigInteger sq_foot;
 
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "propertyid", referencedColumnName = "pid")
     private Property property;
-
-
 }
