@@ -1,9 +1,7 @@
 package com.example.rems.controller;
 
-import com.example.rems.domain.RenterDetails;
 import com.example.rems.entity.Creditcard;
 import com.example.rems.service.CreditcardService;
-import com.example.rems.service.RenterService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

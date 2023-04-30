@@ -1,9 +1,6 @@
 package com.example.rems.controller;
 
-import com.example.rems.domain.AgentDetails;
-import com.example.rems.domain.PropertyDetails;
 import com.example.rems.domain.UserDetails;
-import com.example.rems.service.AgentService;
 import com.example.rems.service.UsersService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

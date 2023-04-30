@@ -1,6 +1,5 @@
 package com.example.rems.repository;
 
-import com.example.rems.entity.Agent;
 import com.example.rems.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

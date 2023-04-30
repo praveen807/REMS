@@ -1,18 +1,16 @@
 package com.example.rems.controller;
 
-import com.example.rems.domain.AgentDetails;
-import com.example.rems.domain.PropertyDetails;
 import com.example.rems.entity.Additional_info;
-import com.example.rems.entity.Booking;
 import com.example.rems.service.AdditionalInfoService;
-import com.example.rems.service.AgentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.math.BigInteger;
-import java.util.List;
 
 @RestController
 @RequestMapping("/info")

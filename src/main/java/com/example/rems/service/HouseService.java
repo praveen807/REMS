@@ -6,10 +6,8 @@ import com.example.rems.repository.HouseRepo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class HouseService {

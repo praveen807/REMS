@@ -1,8 +1,6 @@
 package com.example.rems.service;
 
-import com.example.rems.entity.Additional_info;
 import com.example.rems.entity.NeighbourhoodInfo;
-import com.example.rems.repository.AdditionInfoRepo;
 import com.example.rems.repository.NeighbourhoodInfoRepo;
 import org.springframework.stereotype.Service;
 

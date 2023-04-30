@@ -1,8 +1,6 @@
 package com.example.rems.controller;
 
-import com.example.rems.entity.Additional_info;
 import com.example.rems.entity.NeighbourhoodInfo;
-import com.example.rems.service.AdditionalInfoService;
 import com.example.rems.service.NeighbourhoodInfoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
