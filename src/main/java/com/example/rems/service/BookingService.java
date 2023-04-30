@@ -2,7 +2,9 @@ package com.example.rems.service;
 
 import com.example.rems.domain.BookingDetails;
 import com.example.rems.entity.Booking;
+import com.example.rems.entity.Reward;
 import com.example.rems.repository.BookingRepo;
+import com.example.rems.repository.RewardsRepo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,17 +18,24 @@ public class BookingService {
     @Resource
     private BookingRepo bookingRepo;
 
+    @Resource
+    private RewardsRepo rewardsRepo;
+
     public String bookAProperty(List<BookingDetails> bookingDetails) {
 
         List<Booking> bookingList = new ArrayList<>();
         bookingDetails.forEach(booking -> {
-            bookingRepo.save( Booking.builder().pid(booking.getPid())
+            Booking b = bookingRepo.saveAndFlush( Booking.builder().pid(booking.getPid())
                     .booking_amount(booking.getBooking_amount())
                     .creditcard_number(booking.getCreditcard_number())
                     .email(booking.getEmail())
                     .name(booking.getName())
                     .start_date(booking.getStart_date())
                     .end_date(booking.getEnd_date()).build());
+
+            rewardsRepo.save(Reward.builder().bid(b.getId()).pid(booking.getPid()).name(booking.getName())
+                    .email(booking.getEmail()).reward_point(booking.getBooking_amount()).build());
+
         });
         return "Success";
     }

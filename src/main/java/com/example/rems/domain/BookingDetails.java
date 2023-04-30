@@ -23,7 +23,7 @@ public class BookingDetails {
 
     private BigInteger creditcard_number;
 
-    private BigInteger booking_amount;
+    private Integer booking_amount;
 
     private Date start_date;
 

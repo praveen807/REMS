@@ -2,13 +2,11 @@ package com.example.rems.controller;
 
 import com.example.rems.domain.AgentDetails;
 import com.example.rems.domain.PropertyDetails;
+import com.example.rems.entity.Agent;
 import com.example.rems.service.AgentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -28,6 +26,17 @@ public class AgentController {
     public ResponseEntity<String> addProperty( @RequestBody  PropertyDetails propertyDetails){
         return new ResponseEntity<>(agentService.addProperty(propertyDetails), HttpStatus.OK);
     }
+
+    @GetMapping("/email")
+    public ResponseEntity<Agent> getAgentbyEmail(@PathVariable(name = "email") String email){
+        return new ResponseEntity<>(agentService.getAgentDetails(email), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/email")
+    public ResponseEntity<String> deleteAgentbyEmail(@PathVariable(name = "email") String email){
+        return new ResponseEntity<>(agentService.deleteAgent(email), HttpStatus.OK);
+    }
+
 
 
 }

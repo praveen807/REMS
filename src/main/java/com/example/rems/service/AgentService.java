@@ -6,13 +6,11 @@ import com.example.rems.entity.Agent;
 import com.example.rems.entity.Appartment;
 import com.example.rems.entity.House;
 import com.example.rems.entity.Property;
-import com.example.rems.repository.AgentRepo;
-import com.example.rems.repository.AppartmentRepo;
-import com.example.rems.repository.HouseRepo;
-import com.example.rems.repository.PropertyRepo;
+import com.example.rems.repository.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.math.BigInteger;
 
 @Service
 public class AgentService {
@@ -25,6 +23,9 @@ public class AgentService {
 
     @Resource
     private HouseRepo houseRepo;
+
+    @Resource
+    private AddressRepo addressRepo;
 
     @Resource
     private AppartmentRepo appartmentRepo;
@@ -66,5 +67,16 @@ public class AgentService {
         }
 
         return "Success";
+    }
+
+    public String deleteAgent(String email){
+        agentRepo.deleteByAgid(email);
+        addressRepo.deleteByEmail(email);
+
+        return "Agent Deleted Successfully";
+    }
+
+    public Agent getAgentDetails(String email){
+        return agentRepo.findByAgid(email);
     }
 }

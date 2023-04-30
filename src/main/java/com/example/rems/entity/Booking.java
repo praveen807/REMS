@@ -35,7 +35,7 @@ public class Booking {
     private BigInteger creditcard_number;
 
     @Column(name = "booking_amount")
-    private BigInteger booking_amount;
+    private Integer booking_amount;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "start_date")
