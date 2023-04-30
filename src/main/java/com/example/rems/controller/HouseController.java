@@ -21,7 +21,7 @@ public class HouseController {
 
     @Resource
     private HouseService houseService;
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<House>> getHouse(){
         return new ResponseEntity<>(houseService.getHouses(), HttpStatus.FOUND);
     }

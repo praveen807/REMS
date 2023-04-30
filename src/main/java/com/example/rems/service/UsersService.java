@@ -30,7 +30,7 @@ public class UsersService {
         if (usersEntity.isPresent()){
             Users users = usersEntity.get();
             if (users.getPassword().equals(userDetails.getPassword()) && users.getUser_type().equals(userDetails.getUser_type())){
-                return "Valid";
+                return users.getUser_type();
             }else {
                 return "Invalid";
             }
