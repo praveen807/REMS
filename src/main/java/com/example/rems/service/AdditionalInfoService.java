@@ -17,4 +17,9 @@ public class AdditionalInfoService {
         Optional<Additional_info> infoEntity = additionInfoRepo.findById(pid);
         return infoEntity.orElse(null);
     }
+
+    public String addInfo(Additional_info additional_info){
+        additionInfoRepo.save(additional_info);
+        return "Success";
+    }
 }

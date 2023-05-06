@@ -15,10 +15,6 @@ public class HouseService {
     @Resource
     private HouseRepo houseRepo;
 
-    public List<House> getHouses(){
-        return houseRepo.findAll();
-    }
-
 
     public List<HouseProperty> filterByLocationAndDate(String location, Date  startDate, Date endDate) {
         return houseRepo.findByLocationAndDate(location,startDate,endDate);

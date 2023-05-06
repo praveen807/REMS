@@ -27,16 +27,13 @@ public class AgentController {
         return new ResponseEntity<>(agentService.addProperty(propertyDetails), HttpStatus.OK);
     }
 
-    @GetMapping("/email")
+    @GetMapping("/{email}")
     public ResponseEntity<Agent> getAgentbyEmail(@PathVariable(name = "email") String email){
         return new ResponseEntity<>(agentService.getAgentDetails(email), HttpStatus.OK);
     }
 
-    @DeleteMapping("/email")
+    @DeleteMapping("/deleteAgent/{email}")
     public ResponseEntity<String> deleteAgentbyEmail(@PathVariable(name = "email") String email){
         return new ResponseEntity<>(agentService.deleteAgent(email), HttpStatus.OK);
     }
-
-
-
 }

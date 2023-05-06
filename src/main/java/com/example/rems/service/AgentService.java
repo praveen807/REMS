@@ -2,14 +2,13 @@ package com.example.rems.service;
 
 import com.example.rems.domain.AgentDetails;
 import com.example.rems.domain.PropertyDetails;
-import com.example.rems.entity.Agent;
-import com.example.rems.entity.Appartment;
-import com.example.rems.entity.House;
-import com.example.rems.entity.Property;
+import com.example.rems.entity.*;
 import com.example.rems.repository.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
+import java.math.BigInteger;
 
 @Service
 public class AgentService {
@@ -18,8 +17,7 @@ public class AgentService {
     private AgentRepo agentRepo;
 
     @Resource
-    private PropertyRepo propertyRepo;
-
+    private CommercialBuildingsRepo commercialBuildingsRepo;
     @Resource
     private HouseRepo houseRepo;
 
@@ -48,20 +46,27 @@ public class AgentService {
                 .zipCode(propertyDetails.getZipcode())
                 .state(propertyDetails.getState()).build();
 
-        if (propertyDetails.getProperty_type().equals("house")){
+        if (propertyDetails.getProperty_type().equals("House")){
             House house = House.builder().location(propertyDetails.getLocation())
                     .number_of_rooms(propertyDetails.getNumber_of_rooms())
                     .sq_foot(propertyDetails.getSq_foot()).property(property).build();
             houseRepo.save(house);
         }
-        else if (propertyDetails.getProperty_type().equals("appartment")) {
+        else if (propertyDetails.getProperty_type().equals("Apartment")) {
             Appartment appartment = Appartment.builder().building_type(propertyDetails.getBuilding_type())
                     .location(propertyDetails.getLocation())
                     .number_of_rooms(propertyDetails.getNumber_of_rooms())
                     .sq_foot(propertyDetails.getSq_foot()).property(property).build();
             appartmentRepo.save(appartment);
-        }
-        else {
+        } else if (propertyDetails.getProperty_type().equals("Commercial_Building")) {
+           CommercialBuildings commercialBuildings = CommercialBuildings.builder()
+                   .business_type(propertyDetails.getBusinessType())
+                   .location(propertyDetails.getLocation())
+                   .sq_foot(propertyDetails.getSq_foot())
+                   .property(property).build();
+            commercialBuildingsRepo.save(commercialBuildings);
+            
+        } else {
             return "Enter Correct property type";
         }
 

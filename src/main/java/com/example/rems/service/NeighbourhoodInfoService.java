@@ -17,4 +17,9 @@ public class NeighbourhoodInfoService {
         Optional<NeighbourhoodInfo> infoEntity = neighbourhoodInfoRepo.findById(pid);
         return infoEntity.orElse(null);
     }
+
+    public  String addNeighbourHoodInfo(NeighbourhoodInfo neighbourhoodInfo){
+        neighbourhoodInfoRepo.save(neighbourhoodInfo);
+        return "Success";
+    }
 }

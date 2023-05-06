@@ -1,7 +1,8 @@
 package com.example.rems.controller;
 
+import com.example.rems.domain.CommercailProperty;
 import com.example.rems.domain.HouseProperty;
-import com.example.rems.entity.House;
+import com.example.rems.service.CommercailBuidingsService;
 import com.example.rems.service.HouseService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -16,16 +17,16 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/House")
-public class HouseController {
+@RequestMapping("/commercialBuildings")
+public class CommercialBuildingsController {
 
     @Resource
-    private HouseService houseService;
+    private CommercailBuidingsService commercailBuidingsService;
 
     @GetMapping("/filter/{location}/{startDate}/{endDate}")
-    public ResponseEntity<List<HouseProperty>> filterByLocationAndDate(
+    public ResponseEntity<List<CommercailProperty>> filterByLocationAndDate(
             @PathVariable(name = "location") String location, @PathVariable(name="startDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate, @PathVariable(name="endDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate){
-        return new ResponseEntity<>(houseService.filterByLocationAndDate(location,startDate,endDate),HttpStatus.OK);
+        return new ResponseEntity<>(commercailBuidingsService.filterByLocationAndDate(location,startDate,endDate),HttpStatus.OK);
     }
 
 }

@@ -13,6 +13,8 @@ import java.util.List;
 @Repository
 public interface AppartmentRepo extends JpaRepository<Appartment, BigInteger> {
     @Query(value = "SELECT new com.example.rems.domain.HouseProperty(p.pid ,a.location,a.number_of_rooms,a.sq_foot,p.pType,p.saleType,p.city,p.price,p.availability)"
-            +" FROM Appartment a INNER JOIN Property p ON a.propertyid = p.pid WHERE  a.location =?1 AND p.availability BETWEEN ?2 AND ?3")
+            +" FROM Appartment a INNER JOIN Property p ON a.propertyid = p.pid WHERE  p.city =?1 AND p.availability BETWEEN ?2 AND ?3")
     List<HouseProperty> findByLocationAndDate(String city, Date startDate, Date EndDate);
+
+    void deleteByPropertyid(BigInteger id);
 }

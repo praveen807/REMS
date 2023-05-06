@@ -24,12 +24,12 @@ public class RenterController {
     }
 
     @GetMapping("/email")
-    public ResponseEntity<Renter> getAgentbyEmail(@PathVariable(name = "email") String email){
+    public ResponseEntity<Renter> getRenterbyEmail(@PathVariable(name = "email") String email){
         return new ResponseEntity<>(renterService.getRenterDetails(email), HttpStatus.OK);
     }
 
     @DeleteMapping("/email")
-    public ResponseEntity<String> deleteAgentbyEmail(@PathVariable(name = "email") String email){
+    public ResponseEntity<String> deleteRenterbyEmail(@PathVariable(name = "email") String email){
         return new ResponseEntity<>(renterService.deleteRenter(email), HttpStatus.OK);
     }
 }

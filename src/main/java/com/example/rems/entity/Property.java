@@ -52,6 +52,9 @@ public class Property {
     @OneToOne(mappedBy = "property")
     private Appartment appartment;
 
+    @OneToOne(mappedBy = "property")
+    private CommercialBuildings commercialBuildings;
+
 //    @OneToMany(targetEntity = Booking.class , cascade = CascadeType.ALL)
 //    @JoinColumn(name = "pb_fk", referencedColumnName = "pid")
 //    private  List<Booking> bookings;

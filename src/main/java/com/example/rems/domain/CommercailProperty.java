@@ -12,19 +12,14 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PropertyDetails{
+public class CommercailProperty {
+    private BigInteger pid;
     private String location;
-    private BigInteger number_of_rooms;
-    private BigInteger sq_foot;
-    private String building_type;
-    private String property_type;
+    private String business_type;
+    private BigInteger sqFoot;
+    private String pType;
     private String saleType;
     private String city;
-    private String state;
-    private String zipcode;
-    private String description;
     private BigInteger price;
-    private String email;
-    private String businessType;
     private Date availablity;
 }
